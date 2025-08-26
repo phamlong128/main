@@ -445,9 +445,9 @@ body.dark-mode .contact-section {
 
 footer {
   text-align: center;
-  padding: 1rem;
+  padding: 0.5rem;
   background-color: #222;
   color: white;
-  margin-top: 2rem;
+  margin-top: 0rem;
   font-size: 0.9rem;
 }

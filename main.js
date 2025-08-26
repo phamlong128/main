@@ -1,3 +1,4 @@
+
 // Typing Effect
 const texts = ["Programmer. ", "Developer. ", "Seller. "];
 let count = 0, index = 0, isDeleting = false;
@@ -78,4 +79,3 @@ if(enterEl){
     },40*(20-i));
   }
 }
-
