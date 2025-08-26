@@ -50,10 +50,18 @@ SOCIALS.forEach(s=>{
 // Dark Mode Toggle
 const colorModeBtn = document.getElementById("colorMode");
 let darkMode = false;
-colorModeBtn.addEventListener("click", ()=>{
+let rotation = 0; // góc hiện tại
+
+colorModeBtn.addEventListener("click", () => {
   darkMode = !darkMode;
   document.body.classList.toggle("dark-mode", darkMode);
+
+  // luân phiên chiều quay: lần lẻ → +180, lần chẵn → -180
+  rotation += (rotation % 360 === 0 ? 180 : -180);
+
+  colorModeBtn.style.transform = `rotate(${rotation}deg)`;
 });
+
 
 // Menu toggle for mobile
 const menuButton = document.getElementById("menu-button");
