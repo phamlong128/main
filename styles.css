@@ -437,4 +437,9 @@ body.dark-mode .contact-section {
 .skill-fill.html-css { background-color: #e34c26; } /* cam */
 .skill-fill.lua { background-color: #1f5af9; }       /* xanh dương */
 .skill-fill.python { background-color: #4b8bbe; }    /* xanh biển */
-.skill-fill.batch { background-color: #555; }        /* xám */
+.skill-fill.batch { background-color: #555; } 
+#colorMode {
+  transition: transform 0.5s ease; /* Thời gian xoay và mượt */
+  transform-origin: center;        /* Xoay quanh tâm icon */
+}
+/* xám */
