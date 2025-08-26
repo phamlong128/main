@@ -1,56 +1,73 @@
-// Typing effect
-const texts = [
-    "Student. ",
-    "Programmer. ",
-    "Developer. ",
-    "Tech Enthusiast. "
-];
-
-let count = 0;
-let index = 0;
-let currentText = "";
-let isDeleting = false;
+// Typing Effect
+const texts = ["Programmer. ", "Developer. ", "Seller. "];
+let count = 0, index = 0, isDeleting = false;
 const typedText = document.getElementById("typed-text");
+const typingSpeed = 100, deletingSpeed = 50, delayBetween = 2000;
 
 function type() {
-    currentText = texts[count];
+  const current = texts[count];
+  typedText.textContent = isDeleting ? current.substring(0, index--) : current.substring(0, index++);
+  let speed = isDeleting ? deletingSpeed : typingSpeed;
 
-    if (isDeleting) {
-        typedText.textContent = currentText.substring(0, index--);
-    } else {
-        typedText.textContent = currentText.substring(0, index++);
-    }
-
-    let speed = 100;
-
-    if (!isDeleting && index === currentText.length) {
-        speed = 1500;
-        isDeleting = true;
-    } else if (isDeleting && index === 0) {
-        isDeleting = false;
-        count = (count + 1) % texts.length;
-        speed = 500;
-    }
-
-    setTimeout(type, speed);
+  if (!isDeleting && index === current.length) {
+    speed = delayBetween; isDeleting = true;
+  } else if (isDeleting && index === 0) {
+    isDeleting = false;
+    count = (count + 1) % texts.length;
+    speed = typingSpeed;
+  }
+  setTimeout(type, speed);
 }
 type();
 
-
-// Skill bar animation khi scroll tới
+// Skill Bar Animation
 const skillFills = document.querySelectorAll(".skill-fill");
-
 function showSkills() {
-    const triggerBottom = window.innerHeight * 0.9;
+  const triggerBottom = window.innerHeight * 0.9;
+  skillFills.forEach(bar => {
+    const barTop = bar.getBoundingClientRect().top;
+    if (barTop < triggerBottom) bar.style.width = bar.getAttribute("data-percent");
+  });
+}
+window.addEventListener("scroll", showSkills);
 
-    skillFills.forEach(bar => {
-        const barTop = bar.getBoundingClientRect().top;
-        const targetPercent = bar.getAttribute("data-percent");
+// Social Buttons
+const SOCIALS = [
+  {name:'facebook', url:'https://www.facebook.com/profile.php?id=61578035895912'},
+  {name:'tiktok', url:'https://tiktok.com/@plongdev_'},
+  {name:'messenger', url:'https://m.me/10035254826538527'},
+  {name:'zalo', url:'https://zalo.me/0372868397'}
+];
+const socialContainer = document.querySelector(".social-buttons");
+SOCIALS.forEach(s=>{
+  const btn = document.createElement("button");
+  btn.className="social-btn box-shadow";
+  btn.innerHTML=`<img src="assets/image/${s.name}.png" class="logo" alt="${s.name}"/>`;
+  btn.onclick = ()=>window.open(s.url,'_blank');
+  socialContainer.appendChild(btn);
+});
 
-        if (barTop < triggerBottom) {
-            bar.style.width = targetPercent; // chạy đến % mong muốn
-        }
-    });
+// Dark Mode Toggle
+const colorModeBtn = document.getElementById("colorMode");
+let darkMode = false;
+colorModeBtn.addEventListener("click", ()=>{
+  darkMode = !darkMode;
+  document.body.classList.toggle("dark-mode", darkMode);
+});
+
+// Menu toggle for mobile
+const menuButton = document.getElementById("menu-button");
+const navLinks = document.querySelector(".nav-links");
+menuButton.addEventListener("click", ()=>navLinks.classList.toggle("show"));
+
+// Entrance animation
+const enterEl = document.querySelector(".enter");
+if(enterEl){
+  for(let i=20;i>=0;i--){
+    setTimeout(()=>{
+      enterEl.style.backdropFilter = `blur(${i}px)`;
+      enterEl.style.WebkitBackdropFilter = `blur(${i}px)`;
+    },40*(20-i));
+  }
 }
 
-window.addEventListener("scroll", showSkills);
