@@ -33,9 +33,9 @@ window.addEventListener("scroll", showSkills);
 
 // Social Buttons
 const SOCIALS = [
-  {name:'facebook', url:'https://www.facebook.com/profile.php?id=61578035895912'},
+  {name:'facebook', url:'https://www.facebook.com/share/1AzKp6p2NJ/'},
   {name:'tiktok', url:'https://tiktok.com/@plongdev_'},
-  {name:'messenger', url:'https://m.me/10035254826538527'},
+  {name:'messenger', url:'https://m.me/j/Abb7x2Ql4c0-_b_r/'},
   {name:'zalo', url:'https://zalo.me/0372868397'}
 ];
 const socialContainer = document.querySelector(".social-buttons");
